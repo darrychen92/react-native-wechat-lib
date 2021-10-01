@@ -160,6 +160,7 @@ const nativeSubscribeMessage = wrapApi(WeChat.subscribeMessage);
 
 const nativeChooseInvoice = wrapApi(WeChat.chooseInvoice);
 const nativeShareFile = wrapApi(WeChat.shareFile);
+const nativeOpenCustomer = wrapApi(WeChat.openCustomer)
 
 /**
  * @method sendAuthRequest
@@ -241,6 +242,20 @@ export function shareFile(data) {
       }
     });
   });
+}
+
+export function openCustomer(data){
+  return new Promise((resolve, reject)=>{
+    nativeOpenCustomer(data);
+    emitter.once('OpenCustomer.Resp', (resp) => {
+      if (resp.errCode === 0) {
+        resolve(resp);
+      } else {
+        
+        reject(new WechatError(resp));
+      }
+    });
+  }) 
 }
 
 /**

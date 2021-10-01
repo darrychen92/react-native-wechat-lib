@@ -171,4 +171,11 @@ declare module 'react-native-wechat-lib' {
   export function shareFile(
     data: ShareFileMetadata,
   ): Promise<{ errCode?: number; errStr?: string }>;
+  
+  export function openCustomer(
+    data:{
+      corpId: string
+      url: string
+    }
+  ):Promise<any>
 }
