@@ -1,6 +1,6 @@
 //  Created by little-snow-fox on 2019-10-9.
-#import "WechatLib.h"
-#import "WXApiObject.h"
+#import <WechatLib.h>
+#import <WXApiObject.h>
 #import <React/RCTEventDispatcher.h>
 #import <React/RCTBridge.h>
 #import <React/RCTLog.h>

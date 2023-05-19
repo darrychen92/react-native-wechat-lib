@@ -1269,9 +1269,9 @@
     strip-json-comments "^3.1.1"
 
 "@evilmartians/lefthook@^1.2.2":
-  version "1.2.7"
-  resolved "https://registry.npmjs.org/@evilmartians/lefthook/-/lefthook-1.2.7.tgz"
-  integrity sha512-Y1zaYUUtScNIQnGm2it+mylIHS8AtMJkzmLb6QWpGpo8pmFE157yi0oZi4+7Iwy/GkT0FiPZsai/+NfU1FFxeA==
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.4.0.tgz#cef7bbef569a63a1b50f4af798053efd578eb889"
+  integrity sha512-1Wppuw/Vi0F+HfTm5n9TykzTIHphFUl+nNlHc15rFlFSGm+l0mo7zi9Y1AE4+9Z9Bx3eK6Tes98MLojiSreL5Q==
 
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
