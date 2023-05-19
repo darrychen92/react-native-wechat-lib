@@ -524,6 +524,25 @@ RCT_EXPORT_METHOD(subscribeMessage:(NSDictionary *)data
     [WXApi sendReq:req completion:completion];
 }
 
+// 打开微信客服
+RCT_EXPORT_METHOD(openCustomer:(NSDictionary *)data
+                  :(RCTResponseSenderBlock)callback)
+{
+    WXOpenCustomerServiceReq *req = [[WXOpenCustomerServiceReq alloc] init];
+    req.corpid = data[@"corpId"];    //企业ID
+    req.url = data[@"url"];            //客服URL
+    
+    void ( ^ completion )( BOOL );
+    completion = ^( BOOL success )
+    {
+        callback(@[success ? [NSNull null] : INVOKE_FAILED]);
+        return;
+    };
+    
+    [WXApi sendReq:req completion:completion];
+}
+
+
 RCT_EXPORT_METHOD(launchMiniProgram:(NSDictionary *)data
                   :(RCTResponseSenderBlock)callback)
 {

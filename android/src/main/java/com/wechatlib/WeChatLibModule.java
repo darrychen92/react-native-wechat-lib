@@ -29,9 +29,11 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.tencent.mm.opensdk.constants.Build;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelbiz.ChooseCardFromWXCardPackage;
+import com.tencent.mm.opensdk.modelbiz.WXOpenCustomerServiceChat;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX;
@@ -188,6 +190,21 @@ public class WeChatLibModule extends ReactContextBaseJavaModule implements IWXAP
             return;
         }
         callback.invoke(null, api.openWXApp());
+    }
+
+    @ReactMethod
+    public void openCustomer(ReadableMap data, Callback callback) {
+        if (api == null) {
+            callback.invoke(NOT_REGISTERED);
+            return;
+        }
+        if (api.getWXAppSupportAPI() >= Build.SUPPORT_OPEN_CUSTOMER_SERVICE_CHAT) {
+            WXOpenCustomerServiceChat.Req req = new WXOpenCustomerServiceChat.Req();
+            req.corpId = data.getString("corpId");							      // 企业ID
+            req.url = data.getString("url");	// 客服URL
+
+            callback.invoke(null, api.sendReq(req));
+        }
     }
 
     @ReactMethod
